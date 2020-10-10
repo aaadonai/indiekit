@@ -7,7 +7,7 @@ import {GithubStore} from './packages/store-github/index.js';
 const indiekit = new Indiekit();
 
 // Configure publication preset
-const jekyll = new JekyllPreset();
+const hugo = new HugoPreset();
 
 // Configure content store
 const github = new GithubStore({
@@ -22,7 +22,7 @@ indiekit.set('application.mongodbUrl', process.env.MONGODB_URL);
 
 // Publication settings
 indiekit.set('publication.me', process.env.PUBLICATION_URL);
-indiekit.set('publication.preset', jekyll);
+indiekit.set('publication.preset', hugo);
 indiekit.set('publication.store', github);
 indiekit.set('publication.timeZone', process.env.TZ ? process.env.TZ : 'UTC');
 

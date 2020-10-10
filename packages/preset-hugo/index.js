@@ -116,15 +116,15 @@ export const HugoPreset = class {
       type: 'rsvp',
       name: 'Reply with RSVP',
       post: {
-        path: 'content/replies/{slug}.md',
-        url: 'replies/{slug}'
+        path: 'content/replies/{yyyy}-{MM}-{dd}-{slug}.md',
+        url: 'replies/{yyyy}/{MM}/{dd}/{slug}'
       }
     }, {
       type: 'reply',
       name: 'Reply',
       post: {
-        path: 'content/replies/{slug}.md',
-        url: 'replies/{slug}'
+        path: 'content/replies/{yyyy}-{MM}-{dd}-{slug}.md',
+        url: 'replies/{yyyy}/{MM}/{dd}/{slug}'
       }
     }, {
       type: 'repost',
@@ -137,8 +137,8 @@ export const HugoPreset = class {
       type: 'like',
       name: 'Like',
       post: {
-        path: 'content/likes/{slug}.md',
-        url: 'likes/{slug}'
+        path: 'content/likes/{yyyy}-{MM}-{dd}-{slug}.md',
+        url: 'likes/{yyyy}/{MM}/{dd}/{slug}'
       }
     }];
   }
