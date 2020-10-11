@@ -7,7 +7,9 @@ import {GithubStore} from './packages/store-github/index.js';
 const indiekit = new Indiekit();
 
 // Configure publication preset
-const hugo = new HugoPreset();
+const hugo = new HugoPreset({
+  frontmatterFormat: 'toml'
+});
 
 // Configure content store
 const github = new GithubStore({
