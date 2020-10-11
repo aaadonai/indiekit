@@ -1,6 +1,6 @@
 import 'dotenv/config.js'; // eslint-disable-line import/no-unassigned-import
 import {Indiekit} from './packages/indiekit/index.js';
-import {JekyllPreset} from './packages/preset-jekyll/index.js';
+import {HugoPreset} from './packages/preset-hugo/index.js';
 import {GithubStore} from './packages/store-github/index.js';
 
 // New indiekit instance
