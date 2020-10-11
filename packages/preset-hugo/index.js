@@ -2,7 +2,7 @@ import TOML from '@iarna/toml';
 import YAML from 'yaml';
 
 const defaults = {
-  frontmatterFormat: 'yaml'
+  frontmatterFormat: 'toml'
 };
 
 const getFrontmatter = (properties, frontmatterFormat) => {
