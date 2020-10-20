@@ -180,7 +180,8 @@ export const HugoPreset = class {
       ...(properties.visibility && {visibility: properties.visibility})
     };
 
-    const frontmatter = getFrontmatter(properties, this.options.frontmatterFormat);
+    // const frontmatter = getFrontmatter(properties, this.options.frontmatterFormat);
+    const frontmatter = getFrontmatter(properties, defaults);
 
     return frontmatter + content;
   }
