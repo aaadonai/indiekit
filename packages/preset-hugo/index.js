@@ -55,8 +55,8 @@ export const HugoPreset = class {
       type: 'note',
       name: 'Note',
       post: {
-        path: 'content/notes/{slug}.md',
-        url: 'notes/{slug}'
+        path: 'content/notes/{yyyy}-{MM}-{dd}-{slug}.md',
+        url: 'notes/{yyyy}/{MM}/{dd}/{slug}'
       }
     }, {
       type: 'photo',
@@ -95,8 +95,8 @@ export const HugoPreset = class {
       type: 'bookmark',
       name: 'Bookmark',
       post: {
-        path: 'content/bookmarks/{slug}.md',
-        url: 'bookmarks/{slug}'
+        path: 'content/bookmarks/{yyyy}-{MM}-{dd}-{slug}.md',
+        url: 'bookmarks/{yyyy}/{MM}/{dd}/{slug}'
       }
     }, {
       type: 'checkin',
@@ -154,6 +154,15 @@ export const HugoPreset = class {
     if (properties.content) {
       content = properties.content.html || properties.content;
       content = `${content}\n`;
+      if (properties['in-reply-to']) {
+        content = '[in reply](' + properties['in-reply-to'] + ') ' + content
+      }
+      if (properties['bookmark-of']) {
+        content = '[bookmark](' + properties['bookmark-of'] + ') ' + content
+      }
+      if (properties['post-type'] == 'note') {
+        properties.name = content.substring(0, 10);
+      }
     } else {
       content = '';
     }
@@ -161,6 +170,7 @@ export const HugoPreset = class {
     properties = {
       date: properties.published,
       ...(properties.name && {title: properties.name}),
+      ...(properties.url && {url: properties.url}),
       ...(properties.summary && {summary: properties.summary}),
       ...(properties.category && {category: properties.category}),
       ...(properties.start && {start: properties.start}),
