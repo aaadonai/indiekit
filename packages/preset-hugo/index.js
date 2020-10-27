@@ -1,5 +1,8 @@
 import TOML from '@iarna/toml';
 import YAML from 'yaml';
+import {
+  getPostTypeConfig
+} from '../endpoint-micropub/lib/utils.js';
 
 const defaults = {
   frontmatterFormat: 'toml'
@@ -161,7 +164,8 @@ export const HugoPreset = class {
         content = '[bookmark](' + properties['bookmark-of'] + ') ' + content
       }
       if (properties['post-type'] == 'note') {
-        properties.name = content.substring(0, 10);
+        properties.name = content.substring(0, 10) + '...';
+        property.url = getPostTypeConfig(properties['post-type'], getPostTypes());
       }
     } else {
       content = '';
