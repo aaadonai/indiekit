@@ -162,10 +162,11 @@ export const HugoPreset = class {
       }
       if (properties['bookmark-of']) {
         content = '[bookmark](' + properties['bookmark-of'] + ') ' + content
+        properties.url = getPostTypeConfig(properties['post-type'], getPostTypes());
       }
       if (properties['post-type'] == 'note') {
         properties.name = content.substring(0, 10) + '...';
-        property.url = getPostTypeConfig(properties['post-type'], getPostTypes());
+        properties.url = getPostTypeConfig(properties['post-type'], getPostTypes());
       }
     } else {
       content = '';
