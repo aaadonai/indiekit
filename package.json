@@ -34,7 +34,8 @@
     "coverage": "c8 ava"
   },
   "dependencies": {
-    "dotenv": "^8.1.0"
+    "@indiekit/preset-hugo": "0.1.0-alpha.11",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

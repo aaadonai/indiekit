@@ -14,7 +14,7 @@ export const post = {
       fileType: 'post',
       postType: postData.properties['post-type']
     };
-    const content = postTemplate(postData.properties);
+    const content = postTemplate(postData.properties, publication.postTypes);
     const message = storeMessageTemplate(metaData);
     const published = await store.createFile(postData.path, content, message);
 
