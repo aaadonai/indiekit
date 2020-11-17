@@ -42,7 +42,7 @@ export const postData = {
       properties.url = getPermalink(me, url);
 
       // Post data
-      const postData = {path, properties, mf2};
+      const postData = {path, url, properties, mf2};
       return postData;
     } catch (error) {
       throw new HttpError(400, error.message, {

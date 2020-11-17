@@ -114,10 +114,11 @@ export const JekyllPreset = class {
   /**
    * Post template
    *
-   * @param {object} properties Post data variables
+   * @param {object} postData Post data variables
    * @returns {string} Rendered template
    */
   postTemplate(properties) {
+    let properties = postData.properties;
     let content;
     if (properties.content) {
       content = properties.content.html || properties.content;

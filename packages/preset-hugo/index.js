@@ -149,10 +149,11 @@ export const HugoPreset = class {
   /**
    * Post template
    *
-   * @param {object} properties Post data variables
+   * @param {object} postData Post data variables
    * @returns {string} Rendered template
    */
-  postTemplate(properties, postTypes) {
+  postTemplate(postData) {
+    let properties = postData.properties;
     let content;
     if (properties.content) {
       content = properties.content.html || properties.content;
@@ -162,11 +163,9 @@ export const HugoPreset = class {
       }
       if (properties['bookmark-of']) {
         content = '[bookmark](' + properties['bookmark-of'] + ') ' + content
-        properties.url = getPostTypeConfig(properties['post-type'], postTypes);
       }
       if (properties['post-type'] == 'note') {
         properties.name = content.substring(0, 10) + '...';
-        properties.url = getPostTypeConfig(properties['post-type'], postTypes);
       }
     } else {
       content = '';
@@ -174,8 +173,9 @@ export const HugoPreset = class {
 
     properties = {
       date: properties.published,
+      path: postData.path,
       ...(properties.name && {title: properties.name}),
-      ...(properties.url && {url: properties.url}),
+      ...(properties.url && {url: postData.url}),
       ...(properties.summary && {summary: properties.summary}),
       ...(properties.category && {category: properties.category}),
       ...(properties.start && {start: properties.start}),
